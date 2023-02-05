@@ -281,7 +281,8 @@ for movie in movies
     year_released = movie["year_released"]
     rated = movie["rated"]
     studio_id = Studio.find_by({"id" => movie["studio_id"]})
-    puts "#{title} #{year_released} #{rated} #{studio_id}"
+    studio_name = studio_id["name"]
+    puts "#{title} #{year_released} #{rated} #{studio_name}"
 end
 
 # Prints a header for the cast output
@@ -300,6 +301,8 @@ movies = Movie.all
 for role in roles
     movie_id = Movie.find_by({"id" => role["movid_id"]})
     actor_id = Actor.find_by({"id" => role["actor_id"]})
+    title = movie["title"]
+    name = actor["name"]
     character_name = role["character_name"]
-    puts "#{movie_id} #{actor_id} #{character_name}"
+    puts "#{title} #{name} #{character_name}"
 end
