@@ -263,7 +263,7 @@ role["actor_id"] = hathaway["id"]
 role["character_name"] = "Selina Kyle"
 role.save
 
-puts "There are #{Role.all.count} roles"
+# puts "There are #{Role.all.count} roles"
 
 # Prints a header for the movies output
 puts "Movies"
@@ -273,7 +273,16 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+movies = Movie.all
+studios = Studio.all
 
+for movie in movies 
+    title = movie["title"]
+    year_released = movie["year_released"]
+    rated = movie["rated"]
+    studio_id = Studio.find_by({"id" => movie["studio_id"]})
+    puts "#{title} #{year_released} #{rated} #{studio_id}"
+end
 
 # Prints a header for the cast output
 puts ""
@@ -284,4 +293,13 @@ puts ""
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
+roles = Role.all
+actors = Actor.all
+movies = Movie.all
 
+for role in roles
+    movie_id = Movie.find_by({"id" => role["movid_id"]})
+    actor_id = Actor.find_by({"id" => role["actor_id"]})
+    character_name = role["character_name"]
+    puts "#{movie_id} #{actor_id} #{character_name}"
+end
