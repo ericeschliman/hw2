@@ -295,14 +295,14 @@ puts ""
 # TODO!
 
 roles = Role.all
-actors = Actor.all
 movies = Movie.all
+actors = Actor.all
 
 for role in roles
-    movie_id = Movie.find_by({"id" => role["movid_id"]})
+    movie_id = Movie.find_by({"id" => role["movie_id"]})
     actor_id = Actor.find_by({"id" => role["actor_id"]})
-    title = movie["title"]
-    name = actor["name"]
+    title = movie_id["title"]
+    name = actor_id["name"]
     character_name = role["character_name"]
     puts "#{title} #{name} #{character_name}"
 end
